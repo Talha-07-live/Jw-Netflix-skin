@@ -43,101 +43,112 @@
     <div id="player"></div>
 
     <script>
-        jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';
+        // Function to validate embedding
+        function isValidEmbed() {
+            const referrer = document.referrer;
+            // Add allowed domains here
+            const allowedDomains = ["https://movies.talha.000.pe/", "https://movies.talha.000.pe/"];
+            return allowedDomains.some(domain => referrer.includes(domain));
+        }
 
-        function setupPlayer(videoUrls, drmOptions = null, posterUrl = null) {
-            const playlistItems = videoUrls.map((url, index) => {
-                return {
-                    title: `Talha's Stream - Episode ${index + 1}`,
-                    description: "The World's Finest Assassin Gets Reincarnated In Another World As An Aristocrat",
-                    image: "https://s11.gifyu.com/images/S1l3T.jpg",
-                    sources: [
-                        {
-                            file: url,
-                            type: determineSourceType(url),
-                            label: "1080p",
-                            default: true
-                        }
-                    ],
-                    drm: drmOptions ? {
-                        clearkey: {
-                            keyId: drmOptions.keyId,
-                            key: drmOptions.key
-                        }
-                    } : null
-                };
-            });
+        if (!isValidEmbed()) {
+            document.body.innerHTML = '<h1>চুরি করা মহাপাপ(By Order Of Talha, The Creator Of This Page)</h1><p></p>';
+        } else {
+            jwplayer.key = 'EP3tanOyfjurKgiA7KLnzMTekvDl1Wr14XmAOqNBk3eDc3Yyao+866DfCQaHUofh';
 
-            jwplayer("player").setup({
-                controls: true,
-                sharing: true,
-                displaytitle: true,
-                autoplay: true,
-                displaydescription: true,
-                abouttext: "Video Player By Talha's Stream",
-                aboutlink: "https://t.me/talhasmovie_request_bot",
-                skin: {
-                    name: "netflix"
-                },
-                captions: {
-                    color: "#FFF",
-                    fontSize: 14,
-                    backgroundOpacity: 0,
-                    edgeStyle: "raised"
-                },
-                playlist: playlistItems,
-                advertising: {
-                    client: "vast",
-                    schedule: [
-                        {
-                            offset: "pre",
-                            tag: ""
-                        }
-                    ]
-                },
-                image: posterUrl
-            }).on("ready", function () {
-                const playerContainer = jwplayer().getContainer();
-                const buttonContainer = playerContainer.querySelector(".jw-button-container");
-                const spacer = buttonContainer.querySelector(".jw-spacer");
-                const timeSlider = playerContainer.querySelector(".jw-slider-time");
-                buttonContainer.replaceChild(timeSlider, spacer);
-
-                const rewindContainer = playerContainer.querySelector(".jw-display-icon-rewind");
-                const forwardContainer = rewindContainer.cloneNode(true);
-                const forwardDisplayButton = forwardContainer.querySelector(".jw-icon-rewind");
-                forwardDisplayButton.style.transform = "scaleX(-1)";
-                forwardDisplayButton.ariaLabel = "Forward 10 Seconds";
-                const nextContainer = playerContainer.querySelector(".jw-display-icon-next");
-                nextContainer.parentNode.insertBefore(forwardContainer, nextContainer);
-
-                playerContainer.querySelector(".jw-display-icon-next").style.display = "none";
-                const rewindControlBarButton = buttonContainer.querySelector(".jw-icon-rewind");
-                const forwardControlBarButton = rewindControlBarButton.cloneNode(true);
-                forwardControlBarButton.style.transform = "scaleX(-1)";
-                forwardControlBarButton.ariaLabel = "Forward 10 Seconds";
-                rewindControlBarButton.parentNode.insertBefore(forwardControlBarButton, rewindControlBarButton.nextElementSibling);
-
-                [forwardDisplayButton, forwardControlBarButton].forEach((button) => {
-                    button.onclick = () => {
-                        jwplayer().seek(jwplayer().getPosition() + 10);
+            function setupPlayer(videoUrls, drmOptions = null, posterUrl = null) {
+                const playlistItems = videoUrls.map((url, index) => {
+                    return {
+                        title: `Talha's Stream - Episode ${index + 1}`,
+                        description: "The World's Finest Assassin Gets Reincarnated In Another World As An Aristocrat",
+                        image: "https://s11.gifyu.com/images/S1l3T.jpg",
+                        sources: [
+                            {
+                                file: url,
+                                type: determineSourceType(url),
+                                label: "1080p",
+                                default: true
+                            }
+                        ],
+                        drm: drmOptions ? {
+                            clearkey: {
+                                keyId: drmOptions.keyId,
+                                key: drmOptions.key
+                            }
+                        } : null
                     };
                 });
-            });
-        }
 
-        function determineSourceType(url) {
-            if (url.endsWith(".mkv") || url.endsWith(".mp4")) {
-                return "mp4";
-            } else if (url.endsWith(".m3u8")) {
-                return "hls";
-            } else if (url.endsWith(".mpd")) {
-                return "dash";
+                jwplayer("player").setup({
+                    controls: true,
+                    sharing: true,
+                    displaytitle: true,
+                    autoplay: true,
+                    displaydescription: true,
+                    abouttext: "Video Player By Talha's Stream",
+                    aboutlink: "https://t.me/talhasmovie_request_bot",
+                    skin: {
+                        name: "netflix"
+                    },
+                    captions: {
+                        color: "#FFF",
+                        fontSize: 14,
+                        backgroundOpacity: 0,
+                        edgeStyle: "raised"
+                    },
+                    playlist: playlistItems,
+                    advertising: {
+                        client: "vast",
+                        schedule: [
+                            {
+                                offset: "pre",
+                                tag: ""
+                            }
+                        ]
+                    },
+                    image: posterUrl
+                }).on("ready", function () {
+                    const playerContainer = jwplayer().getContainer();
+                    const buttonContainer = playerContainer.querySelector(".jw-button-container");
+                    const spacer = buttonContainer.querySelector(".jw-spacer");
+                    const timeSlider = playerContainer.querySelector(".jw-slider-time");
+                    buttonContainer.replaceChild(timeSlider, spacer);
+
+                    const rewindContainer = playerContainer.querySelector(".jw-display-icon-rewind");
+                    const forwardContainer = rewindContainer.cloneNode(true);
+                    const forwardDisplayButton = forwardContainer.querySelector(".jw-icon-rewind");
+                    forwardDisplayButton.style.transform = "scaleX(-1)";
+                    forwardDisplayButton.ariaLabel = "Forward 10 Seconds";
+                    const nextContainer = playerContainer.querySelector(".jw-display-icon-next");
+                    nextContainer.parentNode.insertBefore(forwardContainer, nextContainer);
+
+                    playerContainer.querySelector(".jw-display-icon-next").style.display = "none";
+                    const rewindControlBarButton = buttonContainer.querySelector(".jw-icon-rewind");
+                    const forwardControlBarButton = rewindControlBarButton.cloneNode(true);
+                    forwardControlBarButton.style.transform = "scaleX(-1)";
+                    forwardControlBarButton.ariaLabel = "Forward 10 Seconds";
+                    rewindControlBarButton.parentNode.insertBefore(forwardControlBarButton, rewindControlBarButton.nextElementSibling);
+
+                    [forwardDisplayButton, forwardControlBarButton].forEach((button) => {
+                        button.onclick = () => {
+                            jwplayer().seek(jwplayer().getPosition() + 10);
+                        };
+                    });
+                });
             }
-            return "mp4"; // Default to MP4
-        }
 
-        setupPlayer(
+            function determineSourceType(url) {
+                if (url.endsWith(".mkv") || url.endsWith(".mp4")) {
+                    return "mp4";
+                } else if (url.endsWith(".m3u8")) {
+                    return "hls";
+                } else if (url.endsWith(".mpd")) {
+                    return "dash";
+                }
+                return "mp4"; // Default to MP4
+            }
+
+            setupPlayer(
             [
                 "https://api005.backblazeb2.com/file/ssbucket/75284717-6d31-11ef-8c1c-d50bcd41e956.mkv",
                 "https://api005.backblazeb2.com/file/ssbucket/f41be9ca-6d31-11ef-9f2d-d50bcd41e956.mkv",
