@@ -46,8 +46,7 @@
         // Function to validate embedding
         function isValidEmbed() {
             const referrer = document.referrer;
-            // Add allowed domains here
-            const allowedDomains = ["https://movies.talha.000.pe/", "https://movies.talha.000.pe/"];
+            const allowedDomains = ["https://movies.talha.000.pe/"];
             return allowedDomains.some(domain => referrer.includes(domain));
         }
 
@@ -77,19 +76,19 @@
                                 default: true
                             },
                             {
-                                file: "https://example.com/audio/spanish.m4a",
+                                file: "https://example.com/audio/spanish.mp3",
                                 label: "Spanish"
                             }
                         ],
                         tracks: [
                             {
-                                file: "https://github.com/rafaelreis-hotmart/Audio-Sample-files/raw/master/sample.mp3",
+                                file: "https://example.com/subtitles/bangla.vtt",
                                 label: "Bangla",
                                 kind: "captions",
                                 default: true
                             },
                             {
-                                file: "https://example.com/subtitles/spanish.vtt",
+                                file: "https://example.com/subtitles/english.vtt",
                                 label: "English",
                                 kind: "captions"
                             }
@@ -132,7 +131,8 @@
                     },
                     image: posterUrl
                 }).on("ready", function () {
-                    const playerContainer = jwplayer().getContainer();
+                    const player = jwplayer();
+                    const playerContainer = player.getContainer();
                     const buttonContainer = playerContainer.querySelector(".jw-button-container");
                     const spacer = buttonContainer.querySelector(".jw-spacer");
                     const timeSlider = playerContainer.querySelector(".jw-slider-time");
@@ -155,7 +155,7 @@
 
                     [forwardDisplayButton, forwardControlBarButton].forEach((button) => {
                         button.onclick = () => {
-                            jwplayer().seek(jwplayer().getPosition() + 10);
+                            player.seek(player.getPosition() + 10);
                         };
                     });
                 });
