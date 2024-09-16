@@ -70,6 +70,30 @@
                                 default: true
                             }
                         ],
+                        audioTracks: [
+                            {
+                                file: "https://example.com/audio/english.m4a",
+                                label: "English",
+                                default: true
+                            },
+                            {
+                                file: "https://example.com/audio/spanish.m4a",
+                                label: "Spanish"
+                            }
+                        ],
+                        tracks: [
+                            {
+                                file: "https://example.com/subtitles/english.vtt",
+                                label: "English",
+                                kind: "captions",
+                                default: true
+                            },
+                            {
+                                file: "https://example.com/subtitles/spanish.vtt",
+                                label: "Spanish",
+                                kind: "captions"
+                            }
+                        ],
                         drm: drmOptions ? {
                             clearkey: {
                                 keyId: drmOptions.keyId,
@@ -161,8 +185,7 @@
                 {
                     keyId: "c18b6aa739be4c0b774605fcfb5d6b68",
                     key: "e41c3a6f7532b2e3a828d9580124c89d"
-                },
-                ""
+                }
             );
         }
     </script>
