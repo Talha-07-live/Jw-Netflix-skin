@@ -58,9 +58,9 @@
             function setupPlayer(videoUrls, drmOptions = null, posterUrl = null) {
                 const playlistItems = videoUrls.map((url, index) => {
                     return {
-                        title: `Talha's Stream - Episode ${index + 1}`,
-                        description: "You're Watching - The Night Manager Season 1",
-                        image: "https://s11.gifyu.com/images/S11rD.jpg",
+                        title: `Talha's Stream - The Movie${index + 1}`,
+                        description: "You're Watching - The Irregular At Magic High School",
+                        image: "https://s11.gifyu.com/images/SAMGQ.jpg",
                         sources: [
                             {
                                 file: url,
@@ -71,24 +71,24 @@
                         ],
                         audioTracks: [
                             {
-                                file: "https://github.com/rafaelreis-hotmart/Audio-Sample-files/raw/master/sample.mp3",
+                                file: "",
                                 label: "English",
                                 default: true
                             },
                             {
-                                file: "https://example.com/audio/spanish.mp3",
+                                file: "",
                                 label: "Spanish"
                             }
                         ],
                         tracks: [
                             {
-                                file: "https://example.com/subtitles/bangla.vtt",
+                                file: "",
                                 label: "Bangla",
                                 kind: "captions",
                                 default: true
                             },
                             {
-                                file: "https://example.com/subtitles/english.vtt",
+                                file: "",
                                 label: "English",
                                 kind: "captions"
                             }
@@ -174,13 +174,7 @@
 
             setupPlayer(
                 [
-                    "https://api005.backblazeb2.com/file/ssbucket/0a031a74-71af-11ef-bfcf-d50bcd41e956.mkv",
-                    "https://api005.backblazeb2.com/file/ssbucket/1524f584-71af-11ef-966b-d50bcd41e956.mkv",
-                    "https://api005.backblazeb2.com/file/ssbucket/283a7fea-71af-11ef-bacb-d50bcd41e956.mkv",
-                    "https://api005.backblazeb2.com/file/ssbucket/3963a49a-71af-11ef-a940-d50bcd41e956.mkv",
-                    "https://api005.backblazeb2.com/file/ssbucket/4490df80-71af-11ef-8c63-d50bcd41e956.mkv",
-                    "https://api005.backblazeb2.com/file/ssbucket/5780e90c-71af-11ef-87af-d50bcd41e956.mkv",
-                    "https://api005.backblazeb2.com/file/ssbucket/65b11000-71af-11ef-8b6f-d50bcd41e956.mkv"
+                    "https://tt57.biananset.net/_v7/8f217a534f2eaac6018d030f89c0146bba039a6dd42dfba63126e774e042606e9f9658f524bdad32528f10f0184dd8ef38a0f87f3bca18852adb527b003435e6eda3bf035da28aad4f6b3fb775614dbfe9c33fabfe4b974ee3191101b40b06a7ce37534895ae9e32faa1552b936cb2f9408feb2dae192232399c76424c8f507b/index-f2-v1-a1.m3u8"
                 ],
                 {
                     keyId: "c18b6aa739be4c0b774605fcfb5d6b68",
